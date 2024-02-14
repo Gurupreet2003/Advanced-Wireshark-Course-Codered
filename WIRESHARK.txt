@@ -1,0 +1,225 @@
+**##//  	day 4 is important to learn more watch it again		//##**
+--> tempail.com for temporary email
+
+Ethereal to Wireshark
+
+wireshark legacy utilized GTK+
+
+GTK+ to Qt
+
+npcap from nmap.org website download
+
+for merging two captured file make sure they are sync in timestamp
+
+hexdump - packetbytes
+
+exports objects --> for physical/files and data 
+
+time shift --> shift to your current time/ or country time
+
+main toolbar --> 1.)capture option 2.)file options 3.)navigation options 4.)colourisation options zooming options
+
+conversations --> traffics between the networks (statistical tool) 
+
+libpcap,winpcap(outdated),npcap(current) --->engines
+
+capture, decode and display --> steps 
+EPAN --> Ethereal Packet Analyzer Engine(decoder)
+		--> Display filters
+		--> Dissector plugin
+		--> Dissectors
+		--> Protocol Tree
+
+Full duplex Taps
+SPAN  --> switch port analyzer (visibility of the network is less in cooperate)
+		-->ports mirrioring --> send all network traffic to one port for analysing
+RSPAN --> Remote Switch Port analyzer
+TAP --> Terminal Access points
+
+pcapng --> allows comments, pcap doesnt
+
+capture filter and display filter are two different things --> capture filter will only capture some data while display filter show only filter value from the chunk of data
+
+host ip, net ip/mask, dst net ip/mask, port 53, port not(port number) and not arp, tcp portrange 1600-1800.
+
+tcp.port eq(eq means equal to ) port number
+ip.addr == ip
+ip.src
+sip packets 
+
+wireshark/defilters --> contains display filters (add filters)
+wireshark/cfilters  --> conatins capture filters
+
+find --> 1.)narrow --> utf 8 / ascii
+	 2.)wide   --> utf 16
+
+frame.marked==1
+
+display filter expression 
+create a button as a bookmark
+apply as a coloumn --> as to show thee data regarding that criteria on the display tab
+select the data/criteria --> prepare as filter --> chose expression(and,or,not) 
+
+3 way handshake -->
+syn bit 1 
+syn bit 1 and ack bit 1
+ack bit 1 and syn bit 0 --> connection established
+
+tcp --> process to process communication (20-60 bytes)
+
+phase 1 :- connection establiment --> 3 way handshake
+phase 2 :- data transfer
+phase 3 :- connection termination
+
+seqnumber is the byte number that is first byte number to be sent to the 
+acknumber of client should match to the seqnum send by the another client
+acknumber is the next byte number that the reciver (except to recieve) next to recieve
+
+seqnum 	--> 13001		
+acknum 	--> 2001	seqnum	--> 2001(here it tells right side to send from 2001)
+bytes -->13001 -14001  	acknum	--> 14002(here it tells it has recieve up to 14001 send 02)
+			bytes 	--> 2001-3001
+
+ipv4 and ipv6 --> ipv6 is larger address space, no broadcast but use multicast 
+
+ip protocol need icmp(network layer) --> used for reporting errors/ querry messages. no data exchange. supporting protocols. 
+
+ICMPv6 --> communicate updates and error messages. used by echo request and echo reply msg . no arp and no IGMP(internet group management protocol is communication protocol used by routers to establish multicast group memberships).
+
+status codes for http-response 
+1xx --> informational 	
+2xx --> success			
+3xx --> redirection	(page was redirected to another page)
+4xx --> client error
+5xx --> server error
+
+ftp --> two main channel control and data transfer. two modes active and passive.
+ftps and sftp totally different read about it
+
+active mode --> 2 ports(for channel) are used in both client and server
+control channel is for authentication after it the data transfer take place with data channel
+
+passive mode --> when client is behind the firewall. server will provide the port number for data transfer after the client initiate the passive commmand. client will use another port for data transfer.
+
+status codes for ftp-reply code
+1xx --> positive preliminary reply	(requested action initiated)
+2xx --> positive completion reply	(request action completed successfully)	 
+3xx --> positive intermediate reply	(command was accepted pending further information 					from the client)
+4xx --> transient negative completion reply	(command was not accepted try again)
+5xx --> premanent negative completion reply	(command was not accepted do not request 						the same again)
+for passive use command PASV it will provide the port number by last two numbers of the list second last number * 256 + last number
+
+DNS use port 53 
+common DNS records :-
+1.) A	  :- IPv4 address 
+2.) AAAA  :- IPv6 address
+3.) CNAME :- Canonical name record
+4.) MX	  :- Mail record
+5.) NS	  :- Nameserver record
+6.) PTR	  :- Pointer record
+7.) SOA   :- Start of authority record
+8.) SRV	  :- Service location record
+9.) TXT	  :- Text record
+
+Flags in DNS:-
+6 main flags 
+1.) QR	:- Query(0), response(1)
+2.) AA	:- Authoritative Answer (server responsible to resolve domain name)(1 recieved)
+3.) TC 	:- Truncated Answer
+4.) RD	:- Recursion Desired (by client i want recursion forward querry to another server 			     in order to provide the response)
+5.) RA	:- Recurrsion Available(answer by server)
+6.) Z	:- zero(future use)
+OPCODES operation codes
+1.) Query(0)	:- Regular Query
+2.) Notify(4)	:- DNS notify
+3.) Update(5)	:- DNS update
+Rcodes response code
+1.) NoError(0)	:- No Error
+2.) FormErr(1)	:- Format Error
+3.) ServFail(2)	:- Server Failure
+4.) NXDomain(3)	:- Non-Existent Domain
+5.) NotImp(4)	:- Not Implemented
+6.) Refused(5)	:- Query Refused
+
+filter using transaction ID in wireshark.
+TTL -> time to live
+
+DHCP use port 68(client) and 67(server)
+DORA process --> Discovery(Broadcast message sent to all network for ip address. drop by non DHCP servers), Offer(ok i will offer this ip), Request(ok i will take this address), Acknowledge(server will assign ip address subnetmask, DNS and Default gateway to the client). Drop others and take the first one(in case for the multiple offer).
+
+Bootp --> for dhcp filter in display filter
+
+SMTP port 25 --> pushing/delivering mail from client to server (install telnet and SMTP)
+three main commands 
+1.) MAIL from
+2.) RCPT to:
+3.) DATA
+	subject:telnet subject_name and type message for end (.)
+4.) quit
+
+SMTP response Code
+1xx :- informational
+2xx :- Success
+3xx :- Redirection
+4xx :- Persistent transient failure
+5xx :- Permanent errors
+
+ARP Hardware Type 
+1  :- ethernet
+6  :- IEEE 802 network
+7  :- ARCNET
+15 :- Frame Relay
+16 :- ATM
+17 :- HDLC
+18 :- Fiber channel
+19 :- ATM
+20 :- Serial Line
+
+Operation code in ARP
+1 :- ARP Request
+2 :- ARP Reply
+3 :- RARP Request
+4 :- RARP Reply
+5 :- DRARP Request
+6 :- RDARP Reply
+7 :- DRARP Error
+8 :- InARP Request 
+9 :- InARP Error
+
+Use Network Baseline to detect abnormal/normal network behaviour
+at the left end of wireshark their is a circular button known as "Expert Information/system"
+
+step 1:- view --> time/display format --> seconds since previous captured packet
+step 2:- view --> time/display format --> milliseconds
+
+protocol hiearchy
+conversations
+these two for analysis
+
+diffrence in time show the latency high latency means error
+high usage of voip/streaming cause traffic/latency
+check for broadcast traffic as it can provide latency in higher use (DHCP and ARP)(low bandwidth occur when multiple host use same resorce over the network)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
